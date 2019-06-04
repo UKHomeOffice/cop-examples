@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0tazx6n" targetNamespace="platform" exporter="Camunda Modeler" exporterVersion="3.0.1">
+  <bpmn:collaboration id="Collaboration_0twufwy">
+    <bpmn:participant id="Participant_1lraget" name="COP" processRef="SendNotification" />
+    <bpmn:participant id="Participant_0fqdamw" name="Notification system" />
+    <bpmn:messageFlow id="MessageFlow_1gzhbke" sourceRef="EndEvent_1b8009l" targetRef="Participant_0fqdamw" />
+  </bpmn:collaboration>
+  <bpmn:process id="SendNotification" name="Send a message" isExecutable="true" camunda:candidateStarterGroups="copge" camunda:isStartableInTasklist="true">
+    <bpmn:documentation>Send a message to a group</bpmn:documentation>
+    <bpmn:serviceTask id="Task_1nz8fxi" name="Initiate notification workflow" camunda:type="external" camunda:topic="create-notification">
+      <bpmn:incoming>SequenceFlow_051j9ro</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0b3de3w</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:startEvent id="StartEvent_1" name="Complete Send a Message Form" camunda:formKey="sendAMessage">
+      <bpmn:outgoing>SequenceFlow_051j9ro</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="EndEvent_1b8009l">
+      <bpmn:incoming>SequenceFlow_0b3de3w</bpmn:incoming>
+      <bpmn:messageEventDefinition />
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_051j9ro" sourceRef="StartEvent_1" targetRef="Task_1nz8fxi" />
+    <bpmn:sequenceFlow id="SequenceFlow_0b3de3w" sourceRef="Task_1nz8fxi" targetRef="EndEvent_1b8009l" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0twufwy">
+      <bpmndi:BPMNShape id="Participant_1lraget_di" bpmnElement="Participant_1lraget" isHorizontal="true">
+        <dc:Bounds x="156" y="267" width="600" height="250" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="276" y="375" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="252" y="411" width="85" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_11aorwq_di" bpmnElement="Task_1nz8fxi">
+        <dc:Bounds x="420" y="353" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_051j9ro_di" bpmnElement="SequenceFlow_051j9ro">
+        <di:waypoint x="312" y="393" />
+        <di:waypoint x="420" y="393" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="406" y="483.5" width="0" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0b3de3w_di" bpmnElement="SequenceFlow_0b3de3w">
+        <di:waypoint x="520" y="393" />
+        <di:waypoint x="606" y="393" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="603" y="483.5" width="0" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_0ltsi87_di" bpmnElement="EndEvent_1b8009l">
+        <dc:Bounds x="606" y="375" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="664" y="526" width="0" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Participant_0kjr1w3_di" bpmnElement="Participant_0fqdamw" isHorizontal="true">
+        <dc:Bounds x="156" y="81" width="598" height="109" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="MessageFlow_1gzhbke_di" bpmnElement="MessageFlow_1gzhbke">
+        <di:waypoint x="624" y="375" />
+        <di:waypoint x="624" y="190" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="679" y="387.5" width="0" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

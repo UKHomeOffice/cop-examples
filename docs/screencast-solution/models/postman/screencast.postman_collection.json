@@ -1,0 +1,143 @@
+{
+	"info": {
+		"_postman_id": "4102b655-1ecd-4b60-b77f-a6cbfb2042b6",
+		"name": "screencast",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Deploy handle ref data CR",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "90ac0f4f-1b3b-40e7-8428-ad2da848c15f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "multipart/form-data",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "data1",
+							"type": "file",
+							"src": ""
+						},
+						{
+							"key": "data2",
+							"type": "file",
+							"src": ""
+						},
+						{
+							"key": "data3",
+							"type": "file",
+							"src": ""
+						},
+						{
+							"key": "data4",
+							"type": "file",
+							"src": ""
+						},
+						{
+							"key": "data5",
+							"type": "file",
+							"src": ""
+						},
+						{
+							"key": "data6",
+							"type": "file",
+							"src": ""
+						}
+					]
+				},
+				"url": {
+					"raw": "{{CAMUNDA_URL}}/deployment/create/",
+					"host": [
+						"{{CAMUNDA_URL}}"
+					],
+					"path": [
+						"deployment",
+						"create",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Submit change request testing approved path",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJYOVgxT0ZZTHJOR3FDNWlndlItaTdXR1BBYUdyMkYzUjJudURfWlp3c21rIn0.eyJqdGkiOiJiZmY4MjQ2Mi1jMTM1LTQ1ZTgtODM0Ny01YzhhYzZiYjU2MDYiLCJleHAiOjE1NTc4NDE3MDksIm5iZiI6MCwiaWF0IjoxNTU3ODQxNDA5LCJpc3MiOiJodHRwOi8va2V5Y2xvYWsubG9kZXYueHl6L2F1dGgvcmVhbG1zL2RldiIsImF1ZCI6WyJwb3N0Z3Jlc3Qtb3BlcmF0aW9uYWwiLCJhY2NvdW50Il0sInN1YiI6IjM5OGMyNzQ3LTkwNTEtNDYxMy1iZjFhLWFmMWNjODYzNTI4ZiIsInR5cCI6IkJlYXJlciIsImF6cCI6InBsYXRmb3JtLXVpIiwiYXV0aF90aW1lIjoxNTU3ODQxNDA4LCJzZXNzaW9uX3N0YXRlIjoiNmVmNGYzMjItYjhjMS00YWM1LTk3NGQtNDc1N2ZiZGMwNDRlIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwicGxhdGZvcm0iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6ImVtYWlsIHByb2ZpbGUiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkRldiBPbmUiLCJvcHBkYnJvbGUiOiJyZWFkb25seW9wZXJhdGlvbiIsInByZWZlcnJlZF91c2VybmFtZSI6ImRldjEiLCJnaXZlbl9uYW1lIjoiRGV2IiwiZmFtaWx5X25hbWUiOiJPbmUiLCJlbWFpbCI6ImRldjFAbG9kZXYueHl6In0.azIi7ShtH69MODC9LTRE67BnsHtfpUWnItRxDrm-z_OD6RJm-RmyBGiZO9si6vYDtymS7vAMzbURvMMEPhIdABod-1fUJEPEpATU4xZlmxN9PwMbPo3JYsh4BXj3MarVob2GamBFL2Akq94Ff7gRvUKtVCupJQTn8AqnQxoZ2hVmAMLQZXjbV85ARx_erlZWDFmEpVmnz5vdG47jCZt_wdzj5yY0VIVhYXNrqsAloJBvbj4Vp9-6QEUMsGIZAg0lgA3R0HrUEvXNvWGSMotEWetqkN8Bxx-O2cqFkNds7cbl8dOt4CaPcpTmNl7KuAxtyonbGjXNsj2eEtOoRv0bnA",
+							"type": "string"
+						},
+						{
+							"key": "tokenType",
+							"value": "bearer",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"variables\": {\n    \"referenceDataChangeRequest\": {\n        \"value\" : \"{ \\\"refDataId\\\": \\\"123\\\", \\\"refDataName\\\": \\\"ACME helipad\\\", \\\"refDataType\\\": \\\"unspecified\\\", \\\"crEffectiveDate\\\": \\\"2019-05-01T01:00:00\\\", \\\"requestorEmail\\\":\\\"tstephenson@zaizi.com\\\" }\",\n        \"type\": \"Json\"\n    }\n  },\n \"businessKey\" : \"change request destined for approval\"\n}"
+				},
+				"url": {
+					"raw": "{{CAMUNDA_URL}}/process-definition/key/HandleReferenceDataChangeRequest/start",
+					"host": [
+						"{{CAMUNDA_URL}}"
+					],
+					"path": [
+						"process-definition",
+						"key",
+						"HandleReferenceDataChangeRequest",
+						"start"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

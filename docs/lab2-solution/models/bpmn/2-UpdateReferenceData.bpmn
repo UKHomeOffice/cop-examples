@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1kxy1d9" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.1">
+  <bpmn:process id="UpdateReferenceData" name="Update reference data" isExecutable="true" camunda:isStartableInTasklist="false">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>SequenceFlow_043h55u</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_043h55u" sourceRef="StartEvent_1" targetRef="Task_1ykb3zw" />
+    <bpmn:endEvent id="EndEvent_1amoxxf">
+      <bpmn:incoming>SequenceFlow_068n7v9</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_068n7v9" sourceRef="Task_1ykb3zw" targetRef="EndEvent_1amoxxf" />
+    <bpmn:userTask id="Task_1ykb3zw" name="Update reference data" camunda:candidateGroups="COPADM">
+      <bpmn:incoming>SequenceFlow_043h55u</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_068n7v9</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="UpdateReferenceData">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="81" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_043h55u_di" bpmnElement="SequenceFlow_043h55u">
+        <di:waypoint x="215" y="99" />
+        <di:waypoint x="265" y="99" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_1amoxxf_di" bpmnElement="EndEvent_1amoxxf">
+        <dc:Bounds x="415" y="81" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_068n7v9_di" bpmnElement="SequenceFlow_068n7v9">
+        <di:waypoint x="365" y="99" />
+        <di:waypoint x="415" y="99" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="UserTask_19hxweu_di" bpmnElement="Task_1ykb3zw">
+        <dc:Bounds x="265" y="59" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

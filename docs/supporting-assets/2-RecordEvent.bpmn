@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1y6gq27" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.1.0">
+  <bpmn:process id="RecordEvent" name="Record event" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Event received">
+      <bpmn:outgoing>SequenceFlow_0c7nlfq</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0c7nlfq" sourceRef="StartEvent_1" targetRef="Task_1j24c4m" />
+    <bpmn:userTask id="Task_1j24c4m" name="Record the event">
+      <bpmn:incoming>SequenceFlow_0c7nlfq</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_0c18yr3</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1xk2efn</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="EndEvent_0k94s68" name="Event recorded">
+      <bpmn:incoming>SequenceFlow_1c1tnwc</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:exclusiveGateway id="ExclusiveGateway_0lpttb2" name="Accepted?" default="SequenceFlow_0awgx2z">
+      <bpmn:incoming>SequenceFlow_1xk2efn</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0awgx2z</bpmn:outgoing>
+      <bpmn:outgoing>SequenceFlow_1xitlh9</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="SequenceFlow_1xk2efn" sourceRef="Task_1j24c4m" targetRef="ExclusiveGateway_0lpttb2" />
+    <bpmn:sequenceFlow id="SequenceFlow_0awgx2z" name="Yes" sourceRef="ExclusiveGateway_0lpttb2" targetRef="Task_18ffbmc" />
+    <bpmn:sequenceFlow id="SequenceFlow_1xitlh9" name="No" sourceRef="ExclusiveGateway_0lpttb2" targetRef="Task_0o7v7ni" />
+    <bpmn:sequenceFlow id="SequenceFlow_0nbnj6d" sourceRef="Task_18ffbmc" targetRef="Task_1ipc8k9" />
+    <bpmn:sequenceFlow id="SequenceFlow_1c1tnwc" sourceRef="Task_1ipc8k9" targetRef="EndEvent_0k94s68" />
+    <bpmn:userTask id="Task_1ipc8k9" name="Record the event">
+      <bpmn:incoming>SequenceFlow_0nbnj6d</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1c1tnwc</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Task_18ffbmc" name="Record the event">
+      <bpmn:incoming>SequenceFlow_0awgx2z</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0nbnj6d</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Task_0o7v7ni" name="Record the event">
+      <bpmn:incoming>SequenceFlow_1xitlh9</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0c18yr3</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="SequenceFlow_0c18yr3" sourceRef="Task_0o7v7ni" targetRef="Task_1j24c4m" />
+    <bpmn:boundaryEvent id="BoundaryEvent_10yswm7" cancelActivity="false" attachedToRef="Task_1ipc8k9">
+      <bpmn:outgoing>SequenceFlow_018drs5</bpmn:outgoing>
+      <bpmn:timerEventDefinition />
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_018drs5" sourceRef="BoundaryEvent_10yswm7" targetRef="Task_11muciq" />
+    <bpmn:endEvent id="EndEvent_1sqhv57" name="The other end">
+      <bpmn:incoming>SequenceFlow_1u3k7mb</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_1u3k7mb" sourceRef="Task_11muciq" targetRef="EndEvent_1sqhv57" />
+    <bpmn:callActivity id="Task_11muciq" name="Send a reminder">
+      <bpmn:incoming>SequenceFlow_018drs5</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1u3k7mb</bpmn:outgoing>
+    </bpmn:callActivity>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="RecordEvent">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="103" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="161" y="146" width="73" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0c7nlfq_di" bpmnElement="SequenceFlow_0c7nlfq">
+        <di:waypoint x="215" y="121" />
+        <di:waypoint x="265" y="121" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="UserTask_1op931t_di" bpmnElement="Task_1j24c4m">
+        <dc:Bounds x="265" y="81" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_0k94s68_di" bpmnElement="EndEvent_0k94s68">
+        <dc:Bounds x="921" y="103" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="902" y="146" width="75" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ExclusiveGateway_0lpttb2_di" bpmnElement="ExclusiveGateway_0lpttb2" isMarkerVisible="true">
+        <dc:Bounds x="415" y="96" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="414" y="66" width="52" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1xk2efn_di" bpmnElement="SequenceFlow_1xk2efn">
+        <di:waypoint x="365" y="121" />
+        <di:waypoint x="415" y="121" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0awgx2z_di" bpmnElement="SequenceFlow_0awgx2z">
+        <di:waypoint x="465" y="121" />
+        <di:waypoint x="515" y="121" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="471" y="104" width="18" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1xitlh9_di" bpmnElement="SequenceFlow_1xitlh9">
+        <di:waypoint x="440" y="146" />
+        <di:waypoint x="440" y="231" />
+        <di:waypoint x="515" y="231" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="448" y="154" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0nbnj6d_di" bpmnElement="SequenceFlow_0nbnj6d">
+        <di:waypoint x="615" y="121" />
+        <di:waypoint x="665" y="121" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_1c1tnwc_di" bpmnElement="SequenceFlow_1c1tnwc">
+        <di:waypoint x="765" y="121" />
+        <di:waypoint x="921" y="121" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="UserTask_1kscq1u_di" bpmnElement="Task_1ipc8k9">
+        <dc:Bounds x="665" y="81" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_1pv42oo_di" bpmnElement="Task_18ffbmc">
+        <dc:Bounds x="515" y="81" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_11uh0ok_di" bpmnElement="Task_0o7v7ni">
+        <dc:Bounds x="515" y="191" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0c18yr3_di" bpmnElement="SequenceFlow_0c18yr3">
+        <di:waypoint x="615" y="231" />
+        <di:waypoint x="649" y="231" />
+        <di:waypoint x="649" y="331" />
+        <di:waypoint x="315" y="331" />
+        <di:waypoint x="315" y="161" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="BoundaryEvent_0pke9dd_di" bpmnElement="BoundaryEvent_10yswm7">
+        <dc:Bounds x="727" y="143" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_018drs5_di" bpmnElement="SequenceFlow_018drs5">
+        <di:waypoint x="745" y="179" />
+        <di:waypoint x="745" y="241" />
+        <di:waypoint x="792" y="241" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_1sqhv57_di" bpmnElement="EndEvent_1sqhv57">
+        <dc:Bounds x="921" y="223" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="905" y="266" width="69" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1u3k7mb_di" bpmnElement="SequenceFlow_1u3k7mb">
+        <di:waypoint x="892" y="241" />
+        <di:waypoint x="921" y="241" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="CallActivity_11y8ogs_di" bpmnElement="Task_11muciq">
+        <dc:Bounds x="792" y="201" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

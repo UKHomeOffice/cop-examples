@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1yh1tlv" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.0.1">
+  <bpmn:collaboration id="Collaboration_04y5fny">
+    <bpmn:participant id="Participant_0pnbr58" name="COP" processRef="HandleCOPRequest" />
+  </bpmn:collaboration>
+  <bpmn:process id="HandleCOPRequest" name="Handle common operations platform request" isExecutable="true" camunda:isStartableInTasklist="false">
+    <bpmn:documentation>Receive and respond to a specific platform request </bpmn:documentation>
+    <bpmn:laneSet id="LaneSet_0qp2fwd" />
+    <bpmn:startEvent id="StartEvent_1" name="Entity received" />
+  </bpmn:process>
+  <bpmn:message id="Message_03vunev" />
+  <bpmn:message id="Message_0x3hx8j" name="governanceBoardStart" />
+  <bpmn:message id="Message_100dx1b" name="governanceBoardEnd" />
+  <bpmn:message id="Message_121g0ht" name="dataTeamUpdateStart" />
+  <bpmn:message id="Message_03who9r" name="dataTeamUpdateEnd" />
+  <bpmn:message id="Message_0rb195r" name="ReferenceDataChangeRequest" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_04y5fny">
+      <bpmndi:BPMNShape id="Participant_0pnbr58_di" bpmnElement="Participant_0pnbr58" isHorizontal="true">
+        <dc:Bounds x="156" y="81" width="317" height="250" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_1hkhs82_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="242" y="186" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="224" y="229" width="73" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

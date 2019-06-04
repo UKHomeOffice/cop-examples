@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_0dnkkq7" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.1.0">
+  <bpmn:process id="RecordChangeRequest" name="Record change request" isExecutable="true" camunda:isStartableInTasklist="false">
+    <bpmn:startEvent id="StartEvent_1" name="Reference data change request received">
+      <bpmn:outgoing>SequenceFlow_0kvozyt</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="EndEvent_0culqdi" name="Reference data change request logged">
+      <bpmn:incoming>SequenceFlow_0d97b2p</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:task id="Task_12sfe4s" name="Record requested change">
+      <bpmn:incoming>SequenceFlow_0kvozyt</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0d97b2p</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="SequenceFlow_0kvozyt" sourceRef="StartEvent_1" targetRef="Task_12sfe4s" />
+    <bpmn:sequenceFlow id="SequenceFlow_0d97b2p" sourceRef="Task_12sfe4s" targetRef="EndEvent_0culqdi" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="RecordChangeRequest">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="81" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="159" y="124" width="76" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_0culqdi_di" bpmnElement="EndEvent_0culqdi">
+        <dc:Bounds x="422" y="81" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="402" y="124" width="76" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_12sfe4s_di" bpmnElement="Task_12sfe4s">
+        <dc:Bounds x="269" y="59" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0kvozyt_di" bpmnElement="SequenceFlow_0kvozyt">
+        <di:waypoint x="215" y="99" />
+        <di:waypoint x="269" y="99" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0d97b2p_di" bpmnElement="SequenceFlow_0d97b2p">
+        <di:waypoint x="369" y="99" />
+        <di:waypoint x="422" y="99" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
